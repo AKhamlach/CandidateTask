@@ -17,3 +17,10 @@ CREATE TABLE Candidates (
 );
 
 
+It is possible to ask in the endpoint 2 dates for the PreferedCallInterval, both properties optional, when we retrieve the values we only need to map them (Between startDate & endDate || From startDate || Until endDate)
+We can also validate the LinkedInProfile or GitHubProfile by checking if it is a URL format and/or it includes "LinkedIn" or "github"
+
+
+This task took me between 3 to 4hours & 30min
+
+
