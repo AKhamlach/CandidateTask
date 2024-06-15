@@ -1,19 +1,17 @@
 using CandidateTask.Models;
-using CandidateApi.Tests.Mocks;
-using CandidateTask.Controllers;
+using CandidateTask.Tests.Mocks;
 
 
-namespace CandidateApi.Tests
+namespace CandidateTask.Tests
 {
     public class SqlCandidateRepositoryTests
     {
-        private readonly CandidateController _controller;
+        
         private readonly MockDatabase _repository;
 
         public SqlCandidateRepositoryTests()
         {
             _repository = new MockDatabase();
-            _controller = new CandidateController(_repository);
         }
         [Fact]
         public async Task AddNewCandidate()

@@ -1,7 +1,7 @@
 ﻿using CandidateTask.Interfaces;
 using CandidateTask.Models;
 
-namespace CandidateApi.Tests.Mocks
+namespace CandidateTask.Tests.Mocks
 {
     public class MockDatabase : ICandidateRepository
     {
