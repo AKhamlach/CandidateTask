@@ -10,11 +10,13 @@ namespace CandidateTask.Controllers
     {
         
             private readonly ICandidateRepository _repository;
+            private readonly ICacheService _cache;  
 
 
-            public CandidateController(ICandidateRepository repository)
+        public CandidateController(ICandidateRepository repository, ICacheService cacheService)
             {
                 _repository = repository;
+            _cache = cacheService;
 
             }
 
@@ -28,7 +30,14 @@ namespace CandidateTask.Controllers
 
             try
             {
+                if (_cache.TryGetValue<Candidate>(candidate.Email, out var cachedCandidate))
+                {
+                    return Ok(cachedCandidate);
+                }
+
                 Candidate result = await _repository.UpsertCandidate(candidate);
+
+                _cache.Set(candidate.Email, result, TimeSpan.FromMinutes(10));
                 return Ok(result);
             }
             catch (Exception ex)
